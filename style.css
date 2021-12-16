@@ -1,0 +1,48 @@
+html {
+  font-family: monospace;
+  font-size: 16px;
+}
+.calculator {
+  background-color: rgb(31, 31, 31);
+  height: 15.05rem;
+  width: 9.35rem;
+  color: honeydew;
+}
+
+.calculator table {
+  margin: 1px;
+}
+
+.calculator table td {
+  padding: 0.5rem 0.8rem;
+  text-align: center;
+  background-color: rgb(19, 19, 19);
+}
+
+.calculator table td:hover {
+  cursor: pointer;
+  background-color: rgb(52, 52, 52);
+}
+.calculator table td.result-operator:hover {
+  background-color: rgb(3, 111, 196);
+}
+.calculator table td.result-operator {
+  background-color: rgb(19, 67, 105);
+}
+.calculator table .digit {
+  background-color: black;
+}
+
+span.actual,
+span.result {
+  display: block;
+  text-align: right;
+  padding: 0.1rem 0.3rem;
+}
+span.actual {
+  color: rgb(165, 165, 165);
+}
+span.result {
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+}
