@@ -1,7 +1,7 @@
 import { Calculator } from "./calculator.js";
 
-const actualValueElem = document.querySelector("span.actual");
-const resultValueElem = document.querySelector("span.result");
+const actualValueElem = document.querySelector("span.actual") as HTMLElement;
+const resultValueElem = document.querySelector("span.result") as HTMLElement;
 
 const calculator = new Calculator();
 
@@ -13,7 +13,7 @@ const render = function (result) {
 };
 
 document.querySelector("td.clear").addEventListener("click", function () {
-  calculator.clear(this.innerText);
+  calculator.clear();
   render(calculator.getResult());
 });
 
