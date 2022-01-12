@@ -1,6 +1,6 @@
 html {
   font-family: monospace;
-  font-size: 16px;
+  font-size: 60px;
 }
 .calculator {
   background-color: rgb(31, 31, 31);
@@ -9,8 +9,9 @@ html {
   color: honeydew;
 }
 
-.calculator table {
-  margin: 1px;
+.calculator table {   
+  border-spacing: 0.1rem;
+   margin: 0.1rem;
 }
 
 .calculator table td {
