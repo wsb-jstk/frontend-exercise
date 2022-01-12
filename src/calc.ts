@@ -1,4 +1,4 @@
-import { Calculator } from "./calculator.js";
+import { Calculator } from "./calculator";
 
 const actualValueElem = document.querySelector("span.actual") as HTMLElement;
 const resultValueElem = document.querySelector("span.result") as HTMLElement;

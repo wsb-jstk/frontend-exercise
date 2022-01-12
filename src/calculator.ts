@@ -1,5 +1,5 @@
-import { CalculationResult } from "./calculation-result.js";
-import { isOperator, trimEquaction } from "./helper.js";
+import { CalculationResult } from "./calculation-result";
+import { isOperator, trimEquaction } from "./helper";
 export class Calculator {
   #result: string;
   #equation: string;
