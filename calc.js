@@ -1,47 +1,42 @@
-import { isOperator, trimEquaction } from "./helper.js";
+import { Calculator } from "./calculator.js";
 
 const actualValueElem = document.querySelector("span.actual");
 const resultValueElem = document.querySelector("span.result");
 
-function digitClicked() {
-  if (resultValueElem.innerText === "0") {
-    resultValueElem.innerText = this.innerText;
-  } else {
-    resultValueElem.innerText += this.innerText;
-  }
-}
+const calculator = new Calculator();
 
-function clear() {
-  resultValueElem.innerText = "0";
-  actualValueElem.innerHTML = "&nbsp;";
-}
+const render = function (result) {
+  actualValueElem.innerHTML = result.equation
+    ? `${result.equation}=`
+    : "&nbsp;";
+  resultValueElem.innerText = result.result || "0";
+};
 
-function applyOperator() {
-  const last = resultValueElem.innerText[resultValueElem.innerText.length - 1];
-  if (!isOperator(last)) {
-    resultValueElem.innerText += this.innerText;
-  }
-}
-
-function prepareResult() {
-  const equation = trimEquaction(resultValueElem.innerText);
-  actualValueElem.innerText = equation + "=";
-  resultValueElem.innerText = Math.round(eval(equation) * 100) / 100;
-}
-
-document.querySelector("td.clear").addEventListener("click", clear);
+document.querySelector("td.clear").addEventListener("click", function () {
+  calculator.clear(this.innerText);
+  render(calculator.getResult());
+});
 
 document.querySelectorAll("td.digit").forEach((element) => {
-  element.addEventListener("click", digitClicked);
+  element.addEventListener("click", function () {
+    calculator.appendNumber(this.innerText);
+    render(calculator.getResult());
+  });
 });
 
 document.querySelectorAll("td.operator").forEach((element) => {
-  element.addEventListener("click", applyOperator);
+  element.addEventListener("click", function () {
+    calculator.applyOperator(this.innerText);
+    render(calculator.getResult());
+  });
 });
 
 document.querySelectorAll("td.result-operator").forEach((element) => {
-  element.addEventListener("click", prepareResult);
+  element.addEventListener("click", () => {
+    calculator.compute();
+    render(calculator.getResult());
+  });
 });
-document.querySelector("body").addEventListener("contextmenu", e => {
+document.querySelector("body").addEventListener("contextmenu", (e) => {
   e.preventDefault();
 });
